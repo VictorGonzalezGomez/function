@@ -16,3 +16,32 @@ if (document.getElementById("ele1") !== null) {
     pintar(ele, colorYellow);
   });
 }
+//Changing the background color of a box whit clicking on them and selecting the color whit the keyboard
+let selectedColor = "";
+document.addEventListener("keydown", function (event) {
+  switch (event.key) {
+    case "a":
+      selectedColor = "yellow";
+      break;
+    case "s":
+      selectedColor = "red";
+      break;
+    case "d":
+      selectedColor = "green";
+      break;
+    default: 
+        alert("tecla seleccionada no posee color asociado utilia solo a, s, d"); 
+        break;
+  }
+});
+
+function paint(element, color) {
+  element.style.backgroundColor = color;
+}
+
+document.querySelectorAll("div").forEach((element) => {
+  element.addEventListener("click", (e) => {
+    const id = e.target.getAttribute("id");
+    paint(e.target, selectedColor);
+  });
+});
